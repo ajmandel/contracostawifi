@@ -82,4 +82,40 @@
     }, {threshold: 0.5});
     io.observe(el);
   });
+
+  // UTM capture + persistence (works on static sites)
+  try {
+    const params = new URLSearchParams(window.location.search || "");
+    const keys = ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"];
+    let any = false;
+    const payload = {};
+    keys.forEach(k => {
+      const v = params.get(k);
+      if (v) { payload[k]=v; any=true; }
+    });
+    if (any){
+      payload["landing_page"] = window.location.href;
+      localStorage.setItem("ccwifi_utm", JSON.stringify(payload));
+    }
+    // Fill hidden fields on contact page
+    const stored = localStorage.getItem("ccwifi_utm");
+    const data = stored ? JSON.parse(stored) : {};
+    const form = document.querySelector("form[action^='https://formspree.io/']");
+    if (form){
+      keys.concat(["landing_page","referrer"]).forEach(k => {
+        const input = form.querySelector(`input[name='${k}']`);
+        if (!input) return;
+        if (k === "referrer"){
+          input.value = document.referrer || "";
+          return;
+        }
+        if (k === "landing_page"){
+          input.value = (data[k] || window.location.href);
+          return;
+        }
+        input.value = data[k] || "";
+      });
+    }
+  } catch (e) {}
+
 })();

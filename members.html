@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Member Portal | Contra Costa WiFi</title>
+  <meta name="description" content="Member portal for secure login, billing visibility, floorplan review, and support chat."/>
+  <link rel="canonical" href="https://contracostawifi.com/members.html"/>
+  <meta property="og:title" content="Contra Costa WiFi Member Portal"/>
+  <meta property="og:description" content="Secure member login with account management, billing, and security status."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://contracostawifi.com/members.html"/>
+  <meta name="theme-color" content="#0b1020"/>
+  <link rel="preload" href="assets/styles.css" as="style"/>
+  <link rel="stylesheet" href="assets/styles.css"/>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="index.html" aria-label="Contra Costa WiFi Home">
+        <span class="logo" aria-hidden="true"></span>
+        <span>Contra Costa WiFi</span>
+      </a>
+      <nav class="navlinks" aria-label="Primary">
+        <a class="" href="index.html">Home</a><a class="" href="services.html">Services</a><a class="" href="family-security.html">Security</a><a class="" href="managed-plans.html">Plans</a><a class="" href="service-area.html">Service Area</a><a class="active" href="members.html">Members</a><a class="" href="contact.html">Free Assessment</a>
+      </nav>
+      <div class="navcta">
+        <a class="btn" href="contact.html">Call / Text (415) 275‑2095</a>
+        <a class="btn primary" href="contact.html">Free Assessment</a>
+        <button class="burger" data-burger aria-label="Open menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-panel" data-mobile-panel data-open="false" aria-label="Mobile">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="family-security.html">Security</a>
+      <a href="managed-plans.html">Plans</a>
+      <a href="service-area.html">Service Area</a>
+      <a href="members.html">Members</a>
+      <a href="contact.html">Free Assessment</a>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container surface members-shell">
+    <div class="members-head">
+      <div>
+        <div class="kicker"><span class="dot"></span> Private portal for active clients</div>
+        <h1 class="h2">Members Workspace</h1>
+        <p class="subhead">Sign in to review your floorplan, billing activity, security posture, and live support options.</p>
+      </div>
+      <span class="badge purple">Secure access</span>
+    </div>
+
+    <div class="members-grid" data-members-app>
+      <article class="members-card" data-auth-panel>
+        <h2>Login</h2>
+        <p>Continue with OAuth or sign in with e-mail and password.</p>
+
+        <div class="oauth-grid">
+          <button class="btn light oauth-btn" data-oauth-provider="Google" type="button">Continue with Google</button>
+          <button class="btn light oauth-btn" data-oauth-provider="Facebook" type="button">Continue with Facebook</button>
+          <button class="btn light oauth-btn" data-oauth-provider="Apple" type="button">Continue with Apple</button>
+        </div>
+
+        <div class="auth-divider">or use your account credentials</div>
+
+        <form class="auth-form" data-email-login>
+          <label>E-mail
+            <input type="email" name="email" required placeholder="you@example.com"/>
+          </label>
+          <label>Password
+            <input type="password" name="password" minlength="10" required placeholder="Enter your password"/>
+          </label>
+          <button class="btn primary" type="submit">Sign in securely</button>
+        </form>
+
+        <button class="link-btn" type="button" data-toggle-reset>Forgot password?</button>
+
+        <form class="auth-form hidden" data-reset-form>
+          <label>Request password reset
+            <input type="email" name="reset_email" required placeholder="name@domain.com"/>
+          </label>
+          <button class="btn" type="submit">Send reset link</button>
+        </form>
+
+        <p class="mini-note">Authentication model aligns with modern best practices: delegated OAuth, strong password policy, rate-limited login, password-hash verification, and time-limited reset links.</p>
+      </article>
+
+      <section class="members-panel hidden" data-members-panel>
+        <div class="member-status">
+          <div>
+            <h2>Welcome back, <span data-member-name>Member</span></h2>
+            <p class="subhead">Your current deployment snapshot is shown below.</p>
+          </div>
+          <button class="btn light" type="button" data-logout>Sign out</button>
+        </div>
+
+        <div class="floorplan-card">
+          <div class="floorplan-head">
+            <h3>Home Floorplan Mock</h3>
+            <span class="badge green">Demo coverage mode</span>
+          </div>
+          <div class="floorplan-canvas" aria-label="Mock floor plan">
+            <div class="room kitchen">Kitchen</div>
+            <div class="room office">Office</div>
+            <div class="room family">Family Room</div>
+            <div class="room primary-bed">Primary Bedroom</div>
+            <div class="room kids-bed">Kids Bedroom</div>
+            <div class="room garage">Garage</div>
+            <span class="ap ap1">AP 1</span>
+            <span class="ap ap2">AP 2</span>
+            <span class="ap ap3">AP 3</span>
+            <div class="signal signal-good">Great signal</div>
+            <div class="signal signal-ok">Fair signal</div>
+            <div class="signal signal-weak">Needs tuning</div>
+          </div>
+        </div>
+
+        <div class="grid3 member-tools">
+          <article class="card">
+            <h3>Billing</h3>
+            <p>Set up billing, review history, and manage auto-pay through Stripe.</p>
+            <ul class="tool-list">
+              <li><strong>Current plan:</strong> Co-Managed Pro · $249/mo</li>
+              <li><strong>Auto-pay:</strong> Visa •••• 4242 (next run May 1)</li>
+              <li><strong>Last invoice:</strong> Paid on Apr 1, 2026</li>
+            </ul>
+            <a class="btn light" href="#" aria-disabled="true">Open Stripe billing portal</a>
+          </article>
+
+          <article class="card">
+            <h3>Security report</h3>
+            <p>Latest detections, mitigations, and risk posture for your network.</p>
+            <ul class="tool-list">
+              <li>Threat feed sync: 12 minutes ago</li>
+              <li>Blocked inbound probes (24h): 38</li>
+              <li>Current posture: <strong>Low risk</strong></li>
+            </ul>
+            <a class="btn light" href="#" aria-disabled="true">Download weekly report</a>
+          </article>
+
+          <article class="card">
+            <h3>Connect with security expert</h3>
+            <p>Start a support chat with our on-call service tech.</p>
+            <ul class="tool-list">
+              <li>Average response time: under 4 minutes</li>
+              <li>Coverage: 7 days/week, 6am–10pm PT</li>
+              <li>Escalation available for active incidents</li>
+            </ul>
+            <button class="btn primary" type="button" data-chat-launch>Start secure chat</button>
+          </article>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="gap:12px;">
+          <span class="logo" aria-hidden="true"></span>
+          <div>
+            <div style="font-weight:900; font-size:16px; color:white;">Contra Costa WiFi</div>
+            <div style="opacity:.78; font-size:13px;">Enterprise‑grade home Wi‑Fi for busy families.</div>
+          </div>
+        </div>
+        <div class="fine">Local service in Pleasant Hill, Walnut Creek, Lafayette, Concord, Alamo, Danville.</div>
+        <div class="fine">© 2026 Contra Costa WiFi. All rights reserved.</div>
+      </div>
+      <div>
+        <div style="font-weight:850; color:white; margin-bottom:10px;">Popular</div>
+        <div style="display:grid; gap:8px;">
+          <a href="family-security.html">Family network security</a>
+          <a href="managed-plans.html">Managed plans</a>
+          <a href="members.html">Member portal</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight:850; color:white; margin-bottom:10px;">Company</div>
+        <div style="display:grid; gap:8px;">
+          <a href="about.html">About</a>
+          <a href="service-area.html">Service area</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

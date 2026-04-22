@@ -26,3 +26,14 @@ This repository now includes `.github/workflows/deploy-pages.yml` which deploys 
 3. Push this branch to GitHub and merge to `main`.
 4. After the workflow finishes, open the Pages URL shown in the deployment job output.
 
+
+## Shared-host compatibility note
+
+Some static hosting panels fail when creating nested directories (for example showing `Unable to create the directory: assets`).
+This project is configured to work without nested asset folders as well:
+
+- `styles.css` and `app.js` are available at the repo root.
+- HTML pages reference these root files directly.
+
+If your host allows folders, keeping `assets/` is still fine for local development.
+

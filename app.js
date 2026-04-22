@@ -83,6 +83,73 @@
     io.observe(el);
   });
 
+
+  // Members portal mock interactions
+  const app = document.querySelector("[data-members-app]");
+  if (app){
+    const authPanel = app.querySelector("[data-auth-panel]");
+    const membersPanel = app.querySelector("[data-members-panel]");
+    const resetToggle = app.querySelector("[data-toggle-reset]");
+    const resetForm = app.querySelector("[data-reset-form]");
+    const emailLogin = app.querySelector("[data-email-login]");
+    const nameNode = app.querySelector("[data-member-name]");
+    const logoutBtn = app.querySelector("[data-logout]");
+    const oauthBtns = app.querySelectorAll("[data-oauth-provider]");
+    const chatBtn = app.querySelector("[data-chat-launch]");
+
+    const logIn = (displayName) => {
+      if (nameNode) nameNode.textContent = displayName;
+      if (authPanel) authPanel.classList.add("hidden");
+      if (membersPanel) membersPanel.classList.remove("hidden");
+    };
+
+    oauthBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const provider = btn.getAttribute("data-oauth-provider") || "OAuth";
+        logIn(`${provider} member`);
+      });
+    });
+
+    if (emailLogin){
+      emailLogin.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const form = new FormData(emailLogin);
+        const email = (form.get("email") || "Member").toString();
+        const name = email.split("@")[0].replace(/[._-]/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+        logIn(name || "Member");
+      });
+    }
+
+    if (resetToggle && resetForm){
+      resetToggle.addEventListener("click", () => {
+        resetForm.classList.toggle("hidden");
+      });
+    }
+
+    if (resetForm){
+      resetForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = resetForm.querySelector("input[name='reset_email']");
+        const value = email && email.value ? email.value : "your e-mail";
+        window.alert(`Password reset link sent to ${value}.`);
+        resetForm.classList.add("hidden");
+      });
+    }
+
+    if (logoutBtn){
+      logoutBtn.addEventListener("click", () => {
+        if (membersPanel) membersPanel.classList.add("hidden");
+        if (authPanel) authPanel.classList.remove("hidden");
+      });
+    }
+
+    if (chatBtn){
+      chatBtn.addEventListener("click", () => {
+        window.alert("On-call security expert chat is opening (demo).");
+      });
+    }
+  }
+
   // UTM capture + persistence (works on static sites)
   try {
     const params = new URLSearchParams(window.location.search || "");
